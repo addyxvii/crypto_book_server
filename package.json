@@ -1,0 +1,14 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "autobahn": "^18.3.2",
+    "dotenv": "^6.0.0",
+    "node-bittrex-api": "^0.8.3",
+    "poloniex-api": "^1.2.4",
+    "poloniex-api-node": "^1.9.0",
+    "socket.io": "^2.1.1"
+  }
+}
