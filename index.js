@@ -16,7 +16,7 @@ var bittrex = require('node-bittrex-api');
 // configure bittex
 bittrex.options({
     'apikey': env.BITTREX_KEY,
-    'apisecret': env.BITTREX_SECRET,
+    'apisecret': env.BITTREX_SECRET, 
     'verbose': true,
     'cleartext': false
 });
@@ -26,7 +26,7 @@ socket.on('connection', (client) => {
     client.on('getPoloniex', (data) => {
          // new connection to poloniex
          connection.open();
-        
+ 
          connection.onopen = function (session) {
              function marketEvent(args, kwargs) {
                  client.emit('poloniexData', args);
@@ -37,7 +37,7 @@ socket.on('connection', (client) => {
              function trollboxEvent(args, kwargs) {
                  console.log(args);
              }
-             session.subscribe('BTC_XMR', marketEvent);
+             session.subscribe('BTC_ETH', marketEvent);
              session.subscribe('ticker', tickerEvent);
              session.subscribe('trollbox', trollboxEvent);
          }
@@ -47,7 +47,7 @@ socket.on('connection', (client) => {
          }
     })
 
-    client.on('getOrderBooks', (data) => {
+    client.on('getBittrex', (data) => {
 
         // conect to some CRYPTOS
         bittrex.websockets.client(function () {
@@ -69,4 +69,4 @@ socket.on('connection', (client) => {
     });
 })
 socket.listen(port);
-console.log('listening on port', port); 
+console.log('Socket listening on port', port); 
